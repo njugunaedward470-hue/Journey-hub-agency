@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JourneyHub Agency</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --cream: #f5f3ee;
+      --dark: #1a1a1a;
+      --mid: #4a4a4a;
+      --light: #9a9a8a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 48px;
+      background: transparent;
+    }
+
+    .logo {
+      font-family: 'Jost', sans-serif;
+      font-weight: 500;
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #fff;
+      line-height: 1.4;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover { color: #fff; }
+
+    /* ── HERO ── */
+    #hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+
+    .hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.15) 0%,
+        rgba(0,0,0,0.05) 40%,
+        rgba(0,0,0,0.55) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 48px 80px;
+      max-width: 700px;
+      animation: fadeUp 1.2s ease both;
+    }
+
+    .hero-content h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(42px, 6vw, 80px);
+      line-height: 1.1;
+      color: #fff;
+      margin-bottom: 40px;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .btn-outline {
+      display: inline-block;
+      padding: 14px 32px;
+      border: 1px solid rgba(255,255,255,0.8);
+      color: #fff;
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-family: 'Jost', sans-serif;
+      font-weight: 400;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.15);
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: var(--cream);
+      padding: 80px 48px;
+    }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      align-items: center;
+    }
+
+    .contact-image {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .contact-details h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(36px, 4vw, 58px);
+      line-height: 1.15;
+      color: var(--mid);
+      margin-bottom: 52px;
+      letter-spacing: -0.01em;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px 48px;
+      margin-bottom: 52px;
+    }
+
+    .contact-item label {
+      display: block;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      color: var(--dark);
+      margin-bottom: 6px;
+      text-transform: capitalize;
+    }
+
+    .contact-item p {
+      font-size: 14px;
+      color: var(--mid);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    .btn-outline-dark {
+      display: inline-block;
+      padding: 14px 32px;
+      border: 1px solid var(--dark);
+      color: var(--dark);
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-family: 'Jost', sans-serif;
+      font-weight: 400;
+      transition: background 0.3s, color 0.3s;
+      cursor: pointer;
+      background: transparent;
+    }
+
+    .btn-outline-dark:hover {
+      background: var(--dark);
+      color: #fff;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 20px 24px; }
+      .nav-links { display: none; }
+      .hero-content { padding: 0 24px 60px; }
+      #contact { padding: 60px 24px; }
+      .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+      .contact-grid { grid-template-columns: 1fr 1fr; gap: 28px 32px; }
+    }
+
+    @media (max-width: 480px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      .hero-buttons { flex-direction: column; }
+      .btn-outline { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">JourneyHub<br>Agency</div>
+    <ul class="nav-links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <img
+      class="hero-img"
+      src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=1920&q=85"
+      alt="Lion and cub resting in lush green forest"
+    />
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>The Future of<br>Exploration is here</h1>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn-outline">Learn More</a>
+        <a href="#contact" class="btn-outline">Request a Consultation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-inner">
+      <img
+        class="contact-image"
+        src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=900&q=85"
+        alt="Zebras grazing on the African savanna"
+      />
+      <div class="contact-details">
+        <h2>Let's start a<br>conversation</h2>
+        <div class="contact-grid">
+          <div class="contact-item">
+            <label>Phone</label>
+            <p>+254 712 342 000</p>
+          </div>
+          <div class="contact-item">
+            <label>Email</label>
+            <p>hello@Journeyhub.com</p>
+          </div>
+          <div class="contact-item">
+            <label>Address</label>
+            <p>Juja Business Center, Thika Road,<br>Juja Town, Kiambu 00217, Kenya</p>
+          </div>
+          <div class="contact-item">
+            <label>Social Media</label>
+            <p>@Journeyhub</p>
+          </div>
+        </div>
+        <a href="mailto:hello@Journeyhub.com" class="btn-outline-dark">Plan a Trip With Us</a>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
